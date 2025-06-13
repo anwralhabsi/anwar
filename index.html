@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Anwar | SOC L1 Analyst</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #0f172a;
+      color: #f1f5f9;
+    }
+
+    header {
+      background-color: #1e293b;
+      padding: 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+
+    nav {
+      background-color: #334155;
+      padding: 10px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    nav a {
+      color: #cbd5e1;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #38bdf8;
+    }
+
+    main {
+      padding: 40px 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    section {
+      margin-bottom: 60px;
+    }
+
+    h2 {
+      color: #38bdf8;
+    }
+
+    .card {
+      background: #1e293b;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #38bdf8;
+      color: #0f172a;
+      text-decoration: none;
+      border-radius: 8px;
+      margin-top: 20px;
+      font-weight: bold;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #1e293b;
+      color: #94a3b8;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Anwar | SOC Level 1 Analyst</h1>
+    <p>Blue team passion meets real-time threat detection</p>
+  </header>
+
+  <nav>
+    <a href="#about">About</a>
+    <a href="#projects">Tools</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <main>
+    <section id="about">
+      <h2>About Me</h2>
+      <div class="card">
+        <p>Hello! I'm Anwar, currently working as a SOC Level 1 Analyst. My passion lies in threat detection, incident response, and continuously leveling up my skills in cybersecurity. I monitor logs, detect anomalies, and help defend against cyber threats.</p>
+        <p>I enjoy learning through hands-on labs and using tools like Zeek, Wireshark, Suricata, and Splunk. Whether it’s analyzing a suspicious IP or investigating malware behavior, I’m always ready to jump in.</p>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2>My Toolbox</h2>
+      <div class="card">
+        <ul>
+          <li>🔍 Splunk - For log monitoring and alerting</li>
+          <li>🛡️ Zeek - Network security monitoring</li>
+          <li>📊 Suricata - IDS/IPS engine</li>
+          <li>🧠 Wireshark - Packet analysis and forensics</li>
+          <li>⚡ CyberChef - Quick data analysis and decoding</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contact Me</h2>
+      <div class="card">
+        <p>If you’d like to get in touch, collaborate, or ask a question — I’m open! Just click the button below:</p>
+        <a href="mailto:anwar@example.com" class="btn">Email Me</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2025 Anwar — Built with pure HTML, CSS & JS
+  </footer>
+
+  <script>
+    // Smooth scroll
+    document.querySelectorAll("nav a").forEach(anchor => {
+      anchor.addEventListener("click", function(e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute("href")).scrollIntoView({
+          behavior: "smooth"
+        });
+      });
+    });
+  </script>
+</body>
+</html>
