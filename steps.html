@@ -55,13 +55,13 @@
 
   <script>
     function copyAndNotify() {
-      const command = "start https://www.omantel.com";
+      const command = "cmd /c start https://www.omantel.om";
       navigator.clipboard.writeText(command).then(() => {
-        alert("Command copied to clipboard.\nNow press Win + R and paste it to continue.");
-        // Optional: simulate auto-redirect after a delay (for awareness flow)
+        alert("Command copied to clipboard.\nNow press Win + R, paste, and press Enter.");
+        // Optional auto-redirect after 5 seconds
         setTimeout(() => {
-          window.location.href = "https://www.omantel.com";
-        }, 5000); // 5 second delay
+          window.location.href = "https://www.omantel.om";
+        }, 5000);
       });
     }
   </script>
