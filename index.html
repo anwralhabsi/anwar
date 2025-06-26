@@ -1,112 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Verify You Are Human</title>
+  <meta charset="UTF-8">
+  <title>reCAPTCHA Verification</title>
   <style>
     body {
       font-family: Arial, sans-serif;
-      background-color: #f2f2f2;
-      margin: 0;
-      padding: 0;
+      background: #f4f4f4;
       display: flex;
-      flex-direction: column;
-      align-items: center;
       justify-content: center;
+      align-items: center;
       height: 100vh;
     }
-    .card {
-      background: white;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    .container {
+      background: #fff;
+      padding: 25px;
+      border-radius: 8px;
+      box-shadow: 0px 0px 15px rgba(0,0,0,0.1);
+      width: 350px;
       text-align: center;
-      max-width: 400px;
+    }
+    input {
       width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 4px;
+      border: 1px solid #ccc;
     }
-    h1 {
-      color: #4285f4;
-      font-size: 24px;
-      margin-bottom: 10px;
-    }
-    p {
-      color: #555;
-    }
-    .recaptcha-btn {
-      margin-top: 20px;
-      padding: 12px 20px;
-      font-size: 16px;
-      background-color: #4285f4;
+    button {
+      padding: 10px 20px;
+      background: #4285f4;
       color: white;
       border: none;
-      border-radius: 6px;
+      border-radius: 4px;
       cursor: pointer;
     }
-    .steps {
-      margin-top: 20px;
-      background: #fff;
-      border-radius: 8px;
-      padding: 15px;
-      text-align: left;
-      font-size: 15px;
-      line-height: 1.6;
-      color: #333;
-      display: none;
-    }
-    .steps span {
-      font-weight: bold;
+    button:hover {
+      background: #3367d6;
     }
   </style>
 </head>
 <body>
-
-<div class="card" id="captchaCard">
-  <h1>Verify You Are Human</h1>
-  <p>Please verify that you are a human to continue.</p>
-  <button class="recaptcha-btn" onclick="showSteps()">I'm not a robot</button>
-</div>
-
-<div class="card steps" id="stepCard">
-  <h2>Verification Steps</h2>
-  <ol>
-    <li>Press <span>Windows + R</span></li>
-    <li>Press <span>CTRL + V</span> to paste the copied command</li>
-    <li>Press <span>Enter</span></li>
-  </ol>
-</div>
-
-<script>
-  function showSteps() {
-    const cmd = '[SIMULATION] powershell.exe -e ABC123... (placeholder)';
-
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(cmd).then(() => {
-        document.getElementById("captchaCard").style.display = "none";
-        document.getElementById("stepCard").style.display = "block";
-        setTimeout(() => {
-          window.location.href = "https://www.omantel.om";
-        }, 8000);
-      }).catch(() => fallbackCopy(cmd));
-    } else {
-      fallbackCopy(cmd);
-    }
-  }
-
-  function fallbackCopy(text) {
-    const textarea = document.createElement("textarea");
-    textarea.value = text;
-    document.body.appendChild(textarea);
-    textarea.select();
-    document.execCommand("copy");
-    document.body.removeChild(textarea);
-    document.getElementById("captchaCard").style.display = "none";
-    document.getElementById("stepCard").style.display = "block";
-    setTimeout(() => {
-      window.location.href = "https://www.omantel.om";
-    }, 8000);
-  }
-</script>
-
+  <div class="container">
+    <h2>reCAPTCHA Verification</h2>
+    <form action="verify.html" method="GET">
+      <input type="text" name="fname" placeholder="First Name" required>
+      <input type="text" name="lname" placeholder="Last Name" required>
+      <input type="email" name="email" placeholder="Email" required>
+      <label><input type="checkbox" required> I'm not a robot</label><br><br>
+      <button type="submit">Verify</button>
+    </form>
+  </div>
 </body>
 </html>
