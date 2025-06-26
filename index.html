@@ -12,44 +12,32 @@
       align-items: center;
       height: 100vh;
     }
-    .container {
-      background: #fff;
-      padding: 25px;
-      border-radius: 8px;
-      box-shadow: 0px 0px 15px rgba(0,0,0,0.1);
-      width: 350px;
+    .box {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
       text-align: center;
     }
-    input {
-      width: 100%;
-      padding: 10px;
-      margin: 10px 0;
-      border-radius: 4px;
-      border: 1px solid #ccc;
-    }
     button {
-      padding: 10px 20px;
-      background: #4285f4;
-      color: white;
+      margin-top: 20px;
+      padding: 12px 20px;
+      font-size: 16px;
       border: none;
+      background-color: #4285f4;
+      color: white;
       border-radius: 4px;
       cursor: pointer;
-    }
-    button:hover {
-      background: #3367d6;
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <h2>reCAPTCHA Verification</h2>
-    <form action="verify.html" method="GET">
-      <input type="text" name="fname" placeholder="First Name" required>
-      <input type="text" name="lname" placeholder="Last Name" required>
-      <input type="email" name="email" placeholder="Email" required>
-      <label><input type="checkbox" required> I'm not a robot</label><br><br>
-      <button type="submit">Verify</button>
-    </form>
-  </div>
+  <form onsubmit="event.preventDefault(); window.location.href='verify.html';">
+    <div class="box">
+      <h2>Verify You Are Human</h2>
+      <p>Please verify that you are a human to continue.</p>
+      <button type="submit">I'm not a robot</button>
+    </div>
+  </form>
 </body>
 </html>
