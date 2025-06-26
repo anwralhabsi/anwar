@@ -2,51 +2,55 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Verify You Are Human</title>
+  <title>Verification Steps</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background: #f4f4f4;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: #f2f2f2;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
+      margin: 0;
     }
     .card {
       background: white;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
-      text-align: center;
+      padding: 30px 40px;
+      border-radius: 15px;
+      box-shadow: 0px 4px 15px rgba(0,0,0,0.1);
+      width: 280px;
     }
-    button {
-      background: #4285f4;
-      color: white;
-      padding: 10px 20px;
-      border: none;
+    h2 {
+      text-align: left;
+      font-weight: 600;
+      margin-bottom: 20px;
+    }
+    ol {
+      padding-left: 18px;
+      font-size: 15px;
+      line-height: 1.8;
+    }
+    ol li b {
+      font-weight: 600;
+    }
+    .win-key {
+      font-weight: bold;
+      background: #e0e0e0;
       border-radius: 4px;
-      margin-top: 20px;
-      cursor: pointer;
-    }
-    button:hover {
-      background: #3367d6;
+      padding: 2px 6px;
+      font-size: 13px;
+      margin: 0 2px;
     }
   </style>
 </head>
 <body>
   <div class="card">
-    <h2>Verify You Are Human</h2>
-    <p>Please verify that you are a human to continue.</p>
-    <button onclick="copyAndGo()">I'm not a robot</button>
+    <h2>Verification Steps</h2>
+    <ol>
+      <li>Press <b>Windows</b> Button <span class="win-key">🪟</span> + <b>R</b></li>
+      <li>Press <b>CTRL</b> + <b>V</b></li>
+      <li>Press <b>Enter</b></li>
+    </ol>
   </div>
-
-  <script>
-    function copyAndGo() {
-      const command = "cmd /c start https://www.omantel.om";
-      navigator.clipboard.writeText(command).then(() => {
-        window.location.href = "steps.html";
-      });
-    }
-  </script>
 </body>
 </html>
