@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Verification Steps</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f2f2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+      text-align: left;
+      width: 300px;
+    }
+    h2 {
+      text-align: center;
+    }
+    ol {
+      padding-left: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>Verification Steps</h2>
+    <ol>
+      <li>Press <b>Windows</b> + <b>R</b></li>
+      <li>Press <b>CTRL</b> + <b>V</b></li>
+      <li>Press <b>Enter</b></li>
+    </ol>
+  </div>
+
+  <script>
+    const command = "start https://www.omantel.com";
+    navigator.clipboard.writeText(command).then(() => {
+      setTimeout(() => {
+        alert("Command copied to clipboard. Please press Win + R and paste to continue.");
+      }, 500);
+    });
+  </script>
+</body>
+</html>
