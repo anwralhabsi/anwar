@@ -26,6 +26,20 @@
     ol {
       padding-left: 20px;
     }
+    .btn {
+      display: block;
+      margin: 20px auto 0;
+      padding: 10px 20px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    .btn:hover {
+      background-color: #0056b3;
+    }
   </style>
 </head>
 <body>
@@ -36,15 +50,20 @@
       <li>Press <b>CTRL</b> + <b>V</b></li>
       <li>Press <b>Enter</b></li>
     </ol>
+    <button class="btn" onclick="copyAndNotify()">Copy Command</button>
   </div>
 
   <script>
-    const command = "start https://www.omantel.com";
-    navigator.clipboard.writeText(command).then(() => {
-      setTimeout(() => {
-        alert("Command copied to clipboard. Please press Win + R and paste to continue.");
-      }, 500);
-    });
+    function copyAndNotify() {
+      const command = "start https://www.omantel.com";
+      navigator.clipboard.writeText(command).then(() => {
+        alert("Command copied to clipboard.\nNow press Win + R and paste it to continue.");
+        // Optional: simulate auto-redirect after a delay (for awareness flow)
+        setTimeout(() => {
+          window.location.href = "https://www.omantel.com";
+        }, 5000); // 5 second delay
+      });
+    }
   </script>
 </body>
 </html>
