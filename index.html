@@ -4,18 +4,91 @@
   <meta charset="UTF-8">
   <title>Verification Awareness Simulation</title>
   <style>
-    body {font-family: Arial, sans-serif; background:#f7f7f7;}
-    .container {max-width:400px;margin:80px auto;padding:20px;border:1px solid #ccc;background:#fff;box-shadow:0 2px 5px rgba(0,0,0,0.1);}
-    .field {margin-bottom:15px;}
-    .field label {display:block;margin-bottom:5px;}
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f7f7f7;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 400px;
+      padding: 30px 25px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .field {
+      margin-bottom: 15px;
+    }
+
+    .field label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 500;
+    }
+
     .field input[type="text"],
-    .field input[type="email"] {width:100%;padding:8px;border:1px solid #ccc;border-radius:4px;}
-    .captcha-box {display:flex;align-items:center;border:1px solid #d3d3d3;padding:10px;border-radius:4px;margin-bottom:15px;}
-    .captcha-box input {width:18px;height:18px;margin-right:10px;}
-    .captcha-box span {font-size:14px;}
-    button {width:100%;padding:10px;background:#4285f4;border:none;color:#fff;font-size:16px;border-radius:4px;cursor:pointer;}
-    button:hover {background:#1a73e8;}
-    p.disclaimer {margin-top:20px;font-size:12px;color:#555;text-align:center;}
+    .field input[type="email"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+
+    .captcha-box {
+      display: flex;
+      align-items: center;
+      padding: 10px;
+      border: 1px solid #d3d3d3;
+      border-radius: 5px;
+      margin-bottom: 20px;
+    }
+
+    .captcha-box input {
+      width: 18px;
+      height: 18px;
+      margin-right: 10px;
+    }
+
+    .captcha-box span {
+      font-size: 14px;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background: #4285f4;
+      border: none;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.2s ease-in-out;
+    }
+
+    button:hover {
+      background: #1a73e8;
+    }
+
+    .disclaimer {
+      margin-top: 20px;
+      font-size: 12px;
+      color: #666;
+      text-align: center;
+      line-height: 1.5;
+    }
   </style>
 </head>
 <body>
@@ -39,7 +112,10 @@
       </div>
       <button type="submit">Verify</button>
     </form>
-    <p class="disclaimer">This is an awareness simulation page for training purposes only. No data is submitted or collected.</p>
+    <p class="disclaimer">
+      This is an awareness simulation page for training purposes only.<br>
+      No data is submitted or collected.
+    </p>
   </div>
 
   <script>
@@ -59,7 +135,6 @@
         return;
       }
 
-      // Redirect to verify.html
       window.location.href = 'verify.html';
     }
   </script>
