@@ -1,37 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Verification Awareness Simulation</title>
-<style>
-  body {font-family: Arial, sans-serif; background:#f7f7f7;}
-  .container {max-width:400px;margin:80px auto;padding:20px;border:1px solid #ccc;background:#fff;box-shadow:0 2px 5px rgba(0,0,0,0.1);}
-  .field {margin-bottom:15px;}
-  .field label {display:block;margin-bottom:5px;}
-  .field input[type="text"],
-  .field input[type="email"] {width:100%;padding:8px;border:1px solid #ccc;border-radius:4px;}
-  .captcha-box {display:flex;align-items:center;border:1px solid #d3d3d3;padding:10px;border-radius:4px;margin-bottom:15px;}
-  .captcha-box input {width:18px;height:18px;margin-right:10px;}
-  .captcha-box span {font-size:14px;}
-  button {width:100%;padding:10px;background:#4285f4;border:none;color:#fff;font-size:16px;border-radius:4px;cursor:pointer;}
-  button:hover {background:#1a73e8;}
-  p.disclaimer {margin-top:20px;font-size:12px;color:#555;text-align:center;}
-</style>
+  <meta charset="UTF-8">
+  <title>Verification Awareness Simulation</title>
+  <style>
+    body {font-family: Arial, sans-serif; background:#f7f7f7;}
+    .container {max-width:400px;margin:80px auto;padding:20px;border:1px solid #ccc;background:#fff;box-shadow:0 2px 5px rgba(0,0,0,0.1);}
+    .field {margin-bottom:15px;}
+    .field label {display:block;margin-bottom:5px;}
+    .field input[type="text"],
+    .field input[type="email"] {width:100%;padding:8px;border:1px solid #ccc;border-radius:4px;}
+    .captcha-box {display:flex;align-items:center;border:1px solid #d3d3d3;padding:10px;border-radius:4px;margin-bottom:15px;}
+    .captcha-box input {width:18px;height:18px;margin-right:10px;}
+    .captcha-box span {font-size:14px;}
+    button {width:100%;padding:10px;background:#4285f4;border:none;color:#fff;font-size:16px;border-radius:4px;cursor:pointer;}
+    button:hover {background:#1a73e8;}
+    p.disclaimer {margin-top:20px;font-size:12px;color:#555;text-align:center;}
+  </style>
 </head>
 <body>
   <div class="container">
-      <form id="verifyForm" onsubmit="verify(); return false;">
+    <form id="verifyForm" onsubmit="verify(); return false;">
       <div class="field">
         <label for="fname">First Name</label>
-        <input type="text" id="fname" required>
+        <input type="text" id="fname" required autocomplete="off">
       </div>
       <div class="field">
         <label for="lname">Last Name</label>
-        <input type="text" id="lname" required>
+        <input type="text" id="lname" required autocomplete="off">
       </div>
       <div class="field">
         <label for="email">Email</label>
-        <input type="email" id="email" required>
+        <input type="email" id="email" required autocomplete="off">
       </div>
       <div class="captcha-box">
         <input type="checkbox" id="robotCheck" required>
@@ -41,16 +41,27 @@
     </form>
     <p class="disclaimer">This is an awareness simulation page for training purposes only. No data is submitted or collected.</p>
   </div>
+
   <script>
-  function verify() {
-    var fname = document.getElementById('fname').value.trim();
-    var lname = document.getElementById('lname').value.trim();
-    var email = document.getElementById('email').value.trim();
-    var checked = document.getElementById('robotCheck').checked;
-    if (fname && lname && email && checked) {
+    function verify() {
+      var fname = document.getElementById('fname').value.trim();
+      var lname = document.getElementById('lname').value.trim();
+      var email = document.getElementById('email').value.trim();
+      var checked = document.getElementById('robotCheck').checked;
+
+      if (!fname || !lname || !email) {
+        alert("Please fill in all fields.");
+        return;
+      }
+
+      if (!checked) {
+        alert("Please confirm you're not a robot.");
+        return;
+      }
+
+      // Redirect to verify.html
       window.location.href = 'verify.html';
     }
-  }
   </script>
 </body>
 </html>
